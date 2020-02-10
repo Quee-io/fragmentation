@@ -41,7 +41,7 @@ publishing {
         Production(MavenPublication) {
             artifact("$buildDir/outputs/aar/fragmentation-release.aar")
             groupId 'io.quee.fragmentation'
-            artifactId 'fragmentation'
+            artifactId 'quee-fragmentation'
             version '1.0.0'
 
             //The publication doesn't know about our dependencies, so we have to manually add them to the pom
@@ -60,7 +60,7 @@ publishing {
         Sandbox(MavenPublication) {
             artifact("$buildDir/outputs/aar/fragmentation-release.aar")
             groupId 'io.quee.fragmentation'
-            artifactId 'fragmentation'
+            artifactId 'quee-fragmentation'
             version '1.0.0-SANDBOX'
 
             //The publication doesn't know about our dependencies, so we have to manually add them to the pom
@@ -84,8 +84,8 @@ bintray {
     key = System.getenv('BINTRAY_KEY') // Get bintray Secret Key
     configurations = ['archives']
     pkg {
-        repo = 'maven'
-        name = project.name
+        repo = 'Quee'
+        name = 'fragmentation'
         userOrg = 'ibm-iloom'
         licenses = ['Apache-2.0']
         desc = 'Fragmentation'
