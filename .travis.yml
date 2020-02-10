@@ -37,7 +37,7 @@ script:
 
 deploy:
   provider: script
-  script: ./gradlew :clean :droidils:assembleRelease :fragmentation:bintrayUpload #replace with your project name
+  script: ./gradlew :clean :fragmentation:assembleRelease :fragmentation:bintrayUpload #replace with your project name
   skip_cleanup: true # to upload artifacts created during the build
   dry-run: false
   on:
