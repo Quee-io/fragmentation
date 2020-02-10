@@ -1,0 +1,2 @@
+include ':app', ':fragmentation-core', ':fragmentation', ':fragmentation-swipeback', ':eventbus-activity-scope'
+rootProject.name='Fragmentation'
