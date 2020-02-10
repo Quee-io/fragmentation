@@ -39,7 +39,7 @@ dependencies {
 publishing {
     publications {
         Production(MavenPublication) {
-            artifact("$buildDir/outputs/aar/payment-module-release.aar")
+            artifact("$buildDir/outputs/aar/fragmentation-release.aar")
             groupId 'io.quee.fragmentation'
             artifactId 'fragmentation'
             version '1.0.0'
@@ -58,7 +58,7 @@ publishing {
             }
         }
         Sandbox(MavenPublication) {
-            artifact("$buildDir/outputs/aar/payment-module-release.aar")
+            artifact("$buildDir/outputs/aar/fragmentation-release.aar")
             groupId 'io.quee.fragmentation'
             artifactId 'fragmentation'
             version '1.0.0-SANDBOX'
