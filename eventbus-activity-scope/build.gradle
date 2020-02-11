@@ -1,6 +1,13 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'maven-publish'
+apply plugin: 'com.github.dcendents.android-maven'
+
+version = '1.0.0.1'
+group = 'io.quee.fragmentation'
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
@@ -16,4 +23,57 @@ android {
 
 dependencies {
     compileOnly 'org.greenrobot:eventbus:3.0.0'
+}
+
+install {
+    repositories.mavenInstaller {
+        pom.project {
+            name 'eventbus-activity-scope'
+            description 'A wrapper library for basic functions of Google Play Services APIs'
+            url 'https://github.com/Quee-io/fragmentation'
+            inceptionYear '2020'
+
+            packaging 'aar'
+            groupId 'io.quee.fragmentation'
+            artifactId 'eventbus-activity-scope'
+            version '1.0.0.1'
+
+            licenses {
+                license {
+                    name 'The Apache Software License, Version 2.0'
+                    url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    distribution 'repo'
+                }
+            }
+            scm {
+                connection 'https://github.com/Quee-io/fragmentation.git'
+                url 'https://github.com/Quee-io/fragmentation'
+
+            }
+            developers {
+                developer {
+                    name 'Ibrahim AlTamimi'
+                }
+            }
+        }
+    }
+}
+
+bintray {
+    user = project.hasProperty('BINTRAY_USER') ? project.property('BINTRAY_USER') : System.getenv('BINTRAY_USER')
+    key = project.hasProperty('BINTRAY_API_KEY') ? project.property('BINTRAY_API_KEY') : System.getenv('BINTRAY_API_KEY')
+    configurations = ['archives']
+    pkg {
+        repo = 'quee'
+        name = 'eventbus-activity-scope'
+        userOrg = 'ibm-iloom'
+        licenses = ['Apache-2.0']
+        vcsUrl = 'https://github.com/Quee-io/fragmentation.git'
+        version {
+            name = '1.0.0.1'
+            desc = 'Android Fragmentation'
+            vcsTag = '1.0.0'
+            attributes = ['gradle-plugin': 'com.use.less:com.use.less.gradle:gradle-useless-plugin']
+        }
+    }
 }
