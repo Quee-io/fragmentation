@@ -1,3 +1,4 @@
+[ ![Download](https://api.bintray.com/packages/quee/fragmentation/fragmentation/images/download.svg?version=1.0.0.0) ](https://bintray.com/quee/fragmentation/fragmentation/1.0.0.0/link) 
 # Quee Fragmentation.
 
 **Enhancement version from** [Fragmentation](https://github.com/YoKeyword/Fragmentation)
