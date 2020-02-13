@@ -127,8 +127,8 @@ object SupportHelper {
     /**
      * Starting from the top of the stack, look for the FragmentManager and all its substacks, until you find a Fragment with the status of show & userVisible
      */
-    fun getActiveFragment(fragmentManager: FragmentManager): ISupportFragment {
-        return getActiveFragment(fragmentManager, null)!!
+    fun getActiveFragment(fragmentManager: FragmentManager): ISupportFragment? {
+        return getActiveFragment(fragmentManager, null)
     }
 
     fun <T : ISupportFragment> findStackFragment(

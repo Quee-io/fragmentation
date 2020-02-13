@@ -149,7 +149,7 @@ class SupportActivityDelegate(support: ISupportActivity) {
                 if (!mFragmentClickable) {
                     mFragmentClickable = true
                 }
-                val activeFragment: ISupportFragment =
+                val activeFragment: ISupportFragment? =
                     SupportHelper.getActiveFragment(getSupportFragmentManager())
                 if (mTransactionDelegate?.dispatchBackPressedEvent(activeFragment)!!) return
                 mSupport.onBackPressedSupport()

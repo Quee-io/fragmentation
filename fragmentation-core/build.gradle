@@ -5,7 +5,7 @@ apply plugin: 'com.jfrog.bintray'
 apply plugin: 'maven-publish'
 apply plugin: 'com.github.dcendents.android-maven'
 
-version = '1.0.0.0'
+version = '1.0.0.1'
 group = 'io.quee.fragmentation'
 
 android {
@@ -53,7 +53,7 @@ install {
             packaging 'aar'
             groupId 'io.quee.fragmentation'
             artifactId 'fragmentation-core'
-            version '1.0.0.0'
+            version '1.0.0.1'
 
             licenses {
                 license {
@@ -87,7 +87,7 @@ bintray {
         licenses = ['Apache-2.0']
         vcsUrl = 'https://github.com/Quee-io/fragmentation.git'
         version {
-            name = '1.0.0.0'
+            name = '1.0.0.1'
             desc = 'Android Fragmentation'
             vcsTag = '1.0.0'
             attributes = ['gradle-plugin': 'com.use.less:com.use.less.gradle:gradle-useless-plugin']
