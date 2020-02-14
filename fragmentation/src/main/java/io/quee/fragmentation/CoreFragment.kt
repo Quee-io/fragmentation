@@ -21,7 +21,7 @@ import io.quee.fragmentation.core.anim.FragmentAnimator
  */
 open class CoreFragment : Fragment(), ISupportFragment {
     private val mDelegate: SupportFragmentDelegate = SupportFragmentDelegate(this)
-    protected var _mActivity: CoreActivity? = null
+    protected lateinit var coreActivity: CoreActivity
 
     override fun getSupportDelegate(): SupportFragmentDelegate {
         return mDelegate
@@ -38,7 +38,7 @@ open class CoreFragment : Fragment(), ISupportFragment {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         mDelegate.onAttach(context as Activity)
-        _mActivity = mDelegate.getActivity() as CoreActivity
+        coreActivity = mDelegate.getActivity() as CoreActivity
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

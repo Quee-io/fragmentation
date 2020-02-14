@@ -31,8 +31,8 @@ class RecyclerSwipeBackFragment : BaseSwipeBackFragment() {
         mToolbar =
             view.findViewById<View>(R.id.toolbar) as Toolbar
         _initToolbar(mToolbar!!)
-        mAdapter = PagerAdapter(_mActivity)
-        val manager = LinearLayoutManager(_mActivity)
+        mAdapter = PagerAdapter(coreActivity)
+        val manager = LinearLayoutManager(coreActivity)
         mRecy!!.layoutManager = manager
         mRecy!!.adapter = mAdapter
         mAdapter!!.setOnItemClickListener(object : OnItemClickListener {

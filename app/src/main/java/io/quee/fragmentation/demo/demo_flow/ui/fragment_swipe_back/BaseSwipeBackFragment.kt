@@ -11,6 +11,6 @@ open class BaseSwipeBackFragment : SwipeBackFragment() {
     fun _initToolbar(toolbar: Toolbar) {
         toolbar.title = "SwipeBackActivity's Fragment"
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp)
-        toolbar.setNavigationOnClickListener { _mActivity!!.onBackPressed() }
+        toolbar.setNavigationOnClickListener { coreActivity!!.onBackPressed() }
     }
 }
