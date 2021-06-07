@@ -89,7 +89,7 @@ class VisibleDelegate(fragment: ISupportFragment) {
 
     fun onPause() {
         if (taskDispatchSupportVisible != null) {
-            handler.removeCallbacks(taskDispatchSupportVisible)
+            handler.removeCallbacks(taskDispatchSupportVisible!!)
             mAbortInitVisible = true
             return
         }
@@ -162,7 +162,7 @@ class VisibleDelegate(fragment: ISupportFragment) {
             taskDispatchSupportVisible = null
             dispatchSupportVisible(true)
         }
-        handler.post(taskDispatchSupportVisible)
+        handler.post(taskDispatchSupportVisible!!)
     }
 
     private fun dispatchSupportVisible(visible: Boolean) {

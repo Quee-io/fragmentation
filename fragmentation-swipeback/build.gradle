@@ -1,21 +1,19 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'com.jfrog.bintray'
-apply plugin: 'maven-publish'
-apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.bmuschko.nexus'
 
-version = '1.0.0.2'
+version = 'v1.0.0'
 group = 'io.quee.fragmentation'
+archivesBaseName = 'fragmentation-swipeback'
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.3"
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
 
 
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 29
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
 
@@ -36,59 +34,48 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.core:core-ktx:1.2.0'
+    implementation project(path: ':fragmentation')
+    implementation project(path: ':fragmentation-core')
 
-    compileOnly project(':fragmentation')
 }
 
-install {
-    repositories.mavenInstaller {
-        pom.project {
-            name 'fragmentation-swipeback'
-            description 'A powerful library that manage Fragment for Android'
-            url 'https://github.com/Quee-io/fragmentation'
-            inceptionYear '2020'
+extraArchive {
+    sources = true
+    javadoc = true
+}
 
-            packaging 'aar'
-            groupId 'io.quee.fragmentation'
-            artifactId 'fragmentation-swipeback'
-            version '1.0.0.2'
+modifyPom {
+    project {
+        name 'fragmentation-swipeback'
+        description 'Fragmentation.'
+        url 'https://github.com/Quee-io/fragmentation.git'
+        inceptionYear '2021'
 
-            licenses {
-                license {
-                    name 'The Apache Software License, Version 2.0'
-                    url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-                    distribution 'repo'
-                }
+        scm {
+            url 'https://github.com/Quee-io/fragmentation.git'
+            connection 'scm:https://github.com/Quee-io/fragmentation.git'
+            developerConnection 'scm:git://github.com/Quee-io/fragmentation.git'
+        }
+
+        licenses {
+            license {
+                name 'The Apache Software License, Version 2.0'
+                url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                distribution 'repo'
             }
-            scm {
-                connection 'https://github.com/Quee-io/fragmentation.git'
-                url 'https://github.com/Quee-io/fragmentation'
+        }
 
-            }
-            developers {
-                developer {
-                    name 'Ibrahim AlTamimi'
-                }
+        developers {
+            developer {
+                id 'iloom'
+                name 'Ibrahim AlTamimi'
+                email 'ibm.iloom@gmail.com'
             }
         }
     }
 }
-
-bintray {
-    user = project.hasProperty('BINTRAY_USER') ? project.property('BINTRAY_USER') : System.getenv('BINTRAY_USER')
-    key = project.hasProperty('BINTRAY_API_KEY') ? project.property('BINTRAY_API_KEY') : System.getenv('BINTRAY_API_KEY')
-    configurations = ['archives']
-    pkg {
-        repo = 'fragmentation'
-        name = 'fragmentation-swipeback'
-        userOrg = 'quee'
-        licenses = ['Apache-2.0']
-        vcsUrl = 'https://github.com/Quee-io/fragmentation.git'
-        version {
-            name = '1.0.0.2'
-            desc = 'Android Fragmentation'
-            vcsTag = '1.0.0'
-            attributes = ['gradle-plugin': 'com.use.less:com.use.less.gradle:gradle-useless-plugin']
-        }
-    }
+nexus {
+    sign = true
+    repositoryUrl = 'https://oss.sonatype.org/service/local/staging/deploy/maven2/'
+    snapshotRepositoryUrl = 'https://oss.sonatype.org/content/repositories/snapshots/'
 }
